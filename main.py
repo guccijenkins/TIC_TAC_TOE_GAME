@@ -21,6 +21,7 @@ def print_board():
         print(*i)
     print('\n')
 
+
 def player_1():
     global board
     global board_positions
@@ -43,6 +44,11 @@ def player_1():
             board[inputted[0]].insert(inputted[1], "X")
             board[inputted[0]].pop(inputted[1] + 1)
             removed_positions.append(player_1_input)
+
+    if player_1_row and player_1_column > 3 or player_1_row and player_1_column < 1:
+        print("The position input does not exist. Please re-enter a position.")
+        player_1_input.clear()
+        player_1()
 
 def player_2():
     global board
@@ -67,9 +73,44 @@ def player_2():
             board[inputted[0]].pop(inputted[1] + 1)
             removed_positions.append(player_2_input)
 
+    if player_2_row and player_2_column > 3 or player_2_row and player_2_column < 1:
+        print("The position input does not exist. Please re-enter a position.")
+        player_2_input.clear()
+        player_2()
+
 game_on = True
 while game_on:
     print_board()
     player_1()
+    if board[0][0] == "X" and board[0][2] == "X" and board[0][4] == "X" or board[2][0] == "X" and board[2][2] == "X" and board[2][4] == "X" or board[4][0] == "X" and board[4][2] == "X" and board[4][4] == "X":
+        print_board()
+        print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
+        break
+    elif board[0][0] == "X" and board[2][0] == "X" and board[4][0] == "X" or board[0][2] == "X" and board[2][2] == "X" and board[4][2] == "X" or board[4][0] == "X" and board[4][2] == "X" and board[4][4] == "X":
+        print_board()
+        print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
+        break
+    elif board[0][0] == "X" and board[2][2] == "X" and board[4][4] == "X" or board[0][4] == "X" and board[2][2] == "X" and board[4][0] == "X":
+        print_board()
+        print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
+        break
     print_board()
     player_2()
+    if board[0][0] == "O" and board[0][2] == "O" and board[0][4] == "O" or board[2][0] == "O" and board[2][2] == "O" and board[2][4] == "O" or board[4][0] == "O" and board[4][2] == "O" and board[4][4] == "O":
+        print_board()
+        print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
+        break
+    elif board[0][0] == "O" and board[2][0] == "O" and board[4][0] == "O" or board[0][2] == "O" and board[2][2] == "O" and board[4][2] == "O" or board[4][0] == "O" and board[4][2] == "O" and board[4][4] == "O":
+        print_board()
+        print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
+        break
+    elif board[0][0] == "O" and board[2][2] == "O" and board[4][4] == "O" or board[0][4] == "O" and board[2][2] == "O" and board[4][0] == "O":
+        print_board()
+        print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
+        break
