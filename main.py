@@ -21,40 +21,51 @@ def print_board():
         print(*i)
     print('\n')
 
-
 def player_1():
     global board
     global board_positions
+    global removed_positions
     player_1_input = []
     player_1_row = int(input("Player 1, Please enter a row number (1, 2, or 3): "))
     player_1_input.append(player_1_row)
     player_1_column = int(input("Player 1, Please enter a column number (1, 2, or 3): "))
     player_1_input.append(player_1_column)
 
+    for r in removed_positions:
+        if r == player_1_input:
+            print("That position is already taken on the board. Please re-enter a position.")
+            player_1_input.clear()
+            player_1()
+
     for i in board_positions:
         if player_1_input == i[0]:
             inputted = i[1]
             board[inputted[0]].insert(inputted[1], "X")
             board[inputted[0]].pop(inputted[1] + 1)
-            board_positions.remove(i)
-
+            removed_positions.append(player_1_input)
 
 def player_2():
     global board
     global board_positions
+    global removed_positions
     player_2_input = []
     player_2_row = int(input("Player 2, Please enter a row number (1, 2, or 3): "))
     player_2_input.append(player_2_row)
     player_2_column = int(input("Player 2, Please enter a column number (1, 2, or 3): "))
     player_2_input.append(player_2_column)
 
+    for r in removed_positions:
+        if r == player_2_input:
+            print("That position is already taken on the board. Please re-enter a position.")
+            player_2_input.clear()
+            player_2()
+
     for i in board_positions:
         if player_2_input == i[0]:
             inputted = i[1]
             board[inputted[0]].insert(inputted[1], "O")
             board[inputted[0]].pop(inputted[1] + 1)
-            board_positions.remove(i)
-
+            removed_positions.append(player_2_input)
 
 game_on = True
 while game_on:
