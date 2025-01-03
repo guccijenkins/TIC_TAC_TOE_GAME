@@ -1,4 +1,5 @@
 from replit import clear
+from art import font
 # set up the tic tac toe board
 board = [['', '|', '', '|', ''],
             ['-------'],
@@ -96,26 +97,32 @@ while game_on:
     if board[0][0] == "X" and board[0][2] == "X" and board[0][4] == "X" or board[2][0] == "X" and board[2][2] == "X" and board[2][4] == "X" or board[4][0] == "X" and board[4][2] == "X" and board[4][4] == "X":
         print_board()
         print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
         break
     elif board[0][0] == "X" and board[2][0] == "X" and board[4][0] == "X" or board[0][2] == "X" and board[2][2] == "X" and board[4][2] == "X" or board[4][0] == "X" and board[4][2] == "X" and board[4][4] == "X":
         print_board()
         print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
         break
     elif board[0][0] == "X" and board[2][2] == "X" and board[4][4] == "X" or board[0][4] == "X" and board[2][2] == "X" and board[4][0] == "X":
         print_board()
         print("PLAYER 1 WINS. GAME OVER!")
+        game_on = False
         break
     print_board()
     player_2()
     if board[0][0] == "O" and board[0][2] == "O" and board[0][4] == "O" or board[2][0] == "O" and board[2][2] == "O" and board[2][4] == "O" or board[4][0] == "O" and board[4][2] == "O" and board[4][4] == "O":
         print_board()
         print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
         break
     elif board[0][0] == "O" and board[2][0] == "O" and board[4][0] == "O" or board[0][2] == "O" and board[2][2] == "O" and board[4][2] == "O" or board[4][0] == "O" and board[4][2] == "O" and board[4][4] == "O":
         print_board()
         print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
         break
     elif board[0][0] == "O" and board[2][2] == "O" and board[4][4] == "O" or board[0][4] == "O" and board[2][2] == "O" and board[4][0] == "O":
         print_board()
         print("PLAYER 2 WINS. GAME OVER!")
+        game_on = False
         break
